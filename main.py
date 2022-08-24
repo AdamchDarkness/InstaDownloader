@@ -1,10 +1,10 @@
 import instaloader
 import os
 
-if not os.path.exists('InstaScrap'):
- os.mkdir('InstaScrap')
+if not os.path.exists('Result'):
+ os.mkdir('Result')
 
-os.chdir('InstaScrap/')
+os.chdir('Result/')
 
 instagram = instaloader.Instaloader()
 
