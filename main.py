@@ -104,11 +104,8 @@ def instgram_osint(instagram):
 
     user_id = instagram.check_profile_id(user)
 
-    print(log("info", "Creating the target directory"))
-    if not os.path.exists(user):
-        os.mkdir(user)
-    os.chdir(user + '/')
-    print(log("success", "Directory created"))
+    print(log("success", "Target finded"))
+
     sleep(2)
 
     while 1:
@@ -121,7 +118,6 @@ def instgram_osint(instagram):
             print(log("info", "Downloading profile picture..."))
             try:
                 instagram.download_profilepic(user_id)
-                os.rename(user, 'profile picture')
                 print(log("success", "Profile picture downloaded"))
             except Exception as e:
                 print(log("error", f'{e}'))
@@ -130,7 +126,6 @@ def instgram_osint(instagram):
             print(log("info", "Downloading stories..."))
             try:
                 instagram.download_stories(userids={user_id})
-                os.rename('：stories', 'stories')
                 print(log("success", "Stories downloaded"))
             except Exception as e:
                 print(log("error", f'{e}'))
@@ -138,7 +133,6 @@ def instgram_osint(instagram):
             print(log("info", "Downloading Highlights..."))
             try:
                 instagram.download_highlights(user_id)
-                os.rename(user, 'highlights')
                 print(log("success", "Highlights downloaded"))
             except Exception as e:
                 print(log("error", f'{e}'))
@@ -146,7 +140,6 @@ def instgram_osint(instagram):
             print(log("info", "Downloading Posts"))
             try:
                 instagram.download_profile(user_id)
-                os.rename(user, 'posts')
                 print(log("success", "Posts downloaded"))
             except Exception as e:
                 print(log("error", f'{e}'))
@@ -154,7 +147,6 @@ def instgram_osint(instagram):
             print(log("info", "Downloading IGTV"))
             try:
                 instagram.download_igtv(user_id)
-                os.rename(user, 'igtv')
                 print(log("success", "IGTV downloaded"))
             except Exception as e:
                 print(log("error", f'{e}'))
@@ -162,10 +154,11 @@ def instgram_osint(instagram):
             print(log("info", "Downloading posts where user has been tagged"))
             try:
                 instagram.download_tagged(user_id)
-                os.rename(user, 'tagged')
                 print(log("success", "posts where user has been tagged downloaded"))
             except Exception as e:
                 print(log("error", f'{e}'))
+        elif choice == 9:
+            break
         selection_redirect(5)
         continue
 

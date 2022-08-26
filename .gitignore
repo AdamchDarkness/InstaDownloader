@@ -140,3 +140,6 @@ cython_debug/
 
 # Pycharm IDE
 .idea/
+
+# App result
+Result/
